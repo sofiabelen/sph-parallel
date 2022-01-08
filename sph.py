@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-data = np.genfromtxt('xyz270.csv', names=True, delimiter=',')
+data = np.genfromtxt('data/xyz270.csv', names=True, delimiter=',')
 
 n = 10
 R = 3526229
@@ -17,10 +17,7 @@ for i in range(n):
     for j in range(n):
         xij, zij = grid_ij(i, j)
 
-        tmp = 0
-
-        for k in range(100):
-        # for k in range(len(data)):
+        for k in range(len(data)):
             x = data['x'][k]
             z = data['z'][k]
             y = data['y'][k]
@@ -28,12 +25,8 @@ for i in range(n):
             grid[i][j] += data['density'][k] *\
                     np.exp(-alpha * np.sqrt((x - xij)**2 +\
                     (z - zij)**2 + (y - 0)**2))
-            tmp += data['density'][k] *\
-                    np.exp(-alpha * np.sqrt((x - xij)**2 +\
-                    (z - zij)**2 + (y - 0)**2))
-        print(i, j, tmp)
 
-# print(grid)
+print(grid)
 
 x = np.arange(n)
 z = np.arange(n)

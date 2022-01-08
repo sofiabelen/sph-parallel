@@ -8,6 +8,8 @@
     - `grid` - density calculation.
     - `input` - read csv data from file.
     - `output` - write csv output to file.
+    - `script.sh` - scrum script.
+- `data/` - output and input data.
 
 ## Results
 

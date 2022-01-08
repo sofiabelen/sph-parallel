@@ -1,28 +1,33 @@
+#include <mpi.h>
 #include <fstream>
 #include <string>
-#include <vector>
 #include <sstream>
 
 using namespace std;
 
-vector<vector<double> > get_input(string fname) {
-    vector<vector<double> > data;
-    vector<double> row;
+void get_input(double *data) {
+    double *row;
+    row = new double [4];
     string line, word;
     
-    fstream file(fname, ios::in);
+    fstream file("../data/xyz270.csv", ios::in);
 
     if(file.is_open()) {
         getline(file, line);
+        int j = 0;
     	while(getline(file, line)) {
-    	    row.clear();
-    
     	    stringstream str(line);
     
-    	    while(getline(str, word, ','))
-                row.push_back(stod(word));
-    	    data.push_back(row);
+            int i = 0;
+    	    while(getline(str, word, ',')) {
+                row[i] = std::stod(word);
+                i++;
+            }
+            i = 0;
+
+            for (int k = 0; k < 4; k++)
+                data[j * 4 + k] = row[k];
+            j++;
     	}
     }
-    return data;
 }

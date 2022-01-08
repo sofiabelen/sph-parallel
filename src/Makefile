@@ -1,6 +1,6 @@
-CC=g++
+CC=mpic++
 
-FLAGS=
+FLAGS= -lstdc++ -O2 -Wall -std=c++11
 # FLAGS= -fopenmp
 
 all: sph

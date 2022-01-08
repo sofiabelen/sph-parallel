@@ -4,4 +4,4 @@
 
 using namespace std;
 
-vector<vector<double> > get_input(string fname);
+void get_input(double *data);
