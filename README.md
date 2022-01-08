@@ -29,4 +29,4 @@ z_grid_ij = (-R ⋅ j / (ny - 1) ⋅ 2 ⋅ R)
 
 ## Results
 
-![Alt text](img/graph1000.png?raw=true "1")
+![Alt text](img/sph.gif?raw=true "1")
