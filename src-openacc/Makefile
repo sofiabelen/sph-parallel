@@ -1,0 +1,24 @@
+CC=pgc++
+
+FLAGS= -lstdc++ -O2 -Wall -std=c++11 -acc -ta=nvidia:time -Minfo=accel
+
+all: sph
+
+sph: main.o input.o grid.o output.o
+	$(CC) $(FLAGS) main.o input.o grid.o output.o
+
+main.o: main.cpp
+	$(CC) $(FLAGS) -c main.cpp
+
+input.o: input.cpp
+	$(CC) $(FLAGS) -c input.cpp
+
+output.o: output.cpp
+	$(CC) $(FLAGS) -c output.cpp
+
+grid.o: grid.cpp
+	$(CC) $(FLAGS) -c grid.cpp
+
+clean:
+	rm *.o a.out
+

@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-data = np.genfromtxt('data/xyz270.csv', names=True, delimiter=',')
+data = np.genfromtxt('data-mpi/xyz270.csv', names=True, delimiter=',')
 
 n = 10
 R = 3526229
 # aplha = R*10^-11*{0.15, 0.25, 0.5, 1}
-alpha = R * 10**(-11)
+alpha = R * 10**(-11) * 0.15
 
 def grid_ij(i, j):
     return -R + i / (n - 1) * 2 * R, -R + j / (n - 1) * 2 * R
@@ -25,8 +25,12 @@ for i in range(n):
             grid[i][j] += data['density'][k] *\
                     np.exp(-alpha * np.sqrt((x - xij)**2 +\
                     (z - zij)**2 + (y - 0)**2))
+            if i == 9 and j == 9:
+                print(data['density'][k] *\
+                        np.exp(-alpha * np.sqrt((x - xij)**2 +\
+                        (z - zij)**2 + (y - 0)**2)))
 
-print(grid)
+# print(grid)
 
 x = np.arange(n)
 z = np.arange(n)
